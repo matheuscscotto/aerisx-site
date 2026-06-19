@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0a0d12;
+  --color-bg-soft: #0e141c;
+  --color-panel: #131a24;
+  --color-fg: #f2f5f8;
+  --color-muted: #9aa7b6;
+  --color-accent: #38c6e6;
+  --color-accent-2: #1e93c2;
+
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+:root {
+  --line: rgba(255, 255, 255, 0.09);
+  --line-strong: rgba(255, 255, 255, 0.16);
+}
+
+* {
+  border-color: var(--line);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+section[id] {
+  scroll-margin-top: 84px;
+}
+
+::selection {
+  background: rgba(56, 198, 230, 0.28);
+  color: #fff;
+}
+
+/* slim dark scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0d12;
+}
+::-webkit-scrollbar-thumb {
+  background: #1d2733;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #28333f;
+}
+
+@layer utilities {
+  .container-x {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+  .text-gradient {
+    background: linear-gradient(120deg, #ffffff 0%, var(--color-accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.78rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+  .kicker::before {
+    content: "";
+    width: 26px;
+    height: 2px;
+    background: var(--color-accent);
+  }
+  .glow-accent {
+    box-shadow: 0 0 0 1px rgba(56, 198, 230, 0.25),
+      0 8px 40px -8px rgba(56, 198, 230, 0.45);
+  }
+  .bg-grid {
+    background-image: radial-gradient(
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px
+    );
+    background-size: 28px 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
