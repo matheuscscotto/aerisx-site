@@ -23,6 +23,7 @@ export const navLinks = [
   { href: "#quem-somos", label: "Quem Somos" },
   { href: "#servicos", label: "Serviços" },
   { href: "#segmentos", label: "Segmentos" },
+  { href: "#processo", label: "Como Funciona" },
   { href: "#portfolio", label: "Portfólio" },
   { href: "#diferenciais", label: "Diferenciais" },
   { href: "#contato", label: "Contato" },

@@ -1,11 +1,5 @@
 import Reveal from "./Reveal";
 
-const stats = [
-  { v: "4K", l: "Resolução de captação" },
-  { v: "6", l: "Segmentos atendidos" },
-  { v: "360°", l: "Cobertura da área" },
-];
-
 export default function QuemSomos() {
   return (
     <section id="quem-somos" className="relative py-24 sm:py-32">
@@ -30,29 +24,19 @@ export default function QuemSomos() {
         </Reveal>
 
         <Reveal delay={0.15}>
-          <div className="grid grid-cols-3 gap-4">
-            {stats.map((s) => (
-              <div
-                key={s.l}
-                className="rounded-2xl border border-white/10 bg-panel/60 p-6 text-center"
-              >
-                <div className="text-4xl font-extrabold tracking-tight text-gradient">
-                  {s.v}
-                </div>
-                <div className="mt-2 text-xs uppercase tracking-wide text-muted">
-                  {s.l}
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-4 overflow-hidden rounded-2xl border border-white/10">
+          <div className="relative overflow-hidden rounded-3xl border border-white/10">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/portfolio/imobiliario.jpg"
               alt="Vista aérea de empreendimento captada pela AERISX"
-              className="aspect-video w-full object-cover"
+              className="aspect-[4/3] w-full object-cover lg:aspect-[4/5]"
               loading="lazy"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-bg/70 via-transparent to-transparent" />
+            <span className="absolute bottom-5 left-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-bg/40 px-4 py-2 text-xs font-medium uppercase tracking-wide text-fg backdrop-blur-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+              Captação real AERISX
+            </span>
           </div>
         </Reveal>
       </div>
