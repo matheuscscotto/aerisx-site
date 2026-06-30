@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   motion,
   useReducedMotion,
@@ -15,6 +15,24 @@ const trust = ["Imagens & vídeos 4K", "Voo profissional", "Entrega ágil"];
 export default function Hero() {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Adia o vídeo (2,7 MB) para depois da primeira pintura: libera banda
+  // para o LCP (poster + título). O poster cobre a tela enquanto isso.
+  const [loadVideo, setLoadVideo] = useState(false);
+  useEffect(() => {
+    type W = Window & { requestIdleCallback?: (cb: () => void) => number };
+    const w = window as W;
+    if (w.requestIdleCallback) {
+      w.requestIdleCallback(() => setLoadVideo(true));
+    } else {
+      const t = setTimeout(() => setLoadVideo(true), 1200);
+      return () => clearTimeout(t);
+    }
+  }, []);
+  useEffect(() => {
+    if (loadVideo) videoRef.current?.load();
+  }, [loadVideo]);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -35,15 +53,16 @@ export default function Hero() {
         style={reduce ? undefined : { y, scale }}
       >
         <video
+          ref={videoRef}
           className="h-full w-full object-cover"
           autoPlay
           muted
           loop
           playsInline
           poster="/video/hero_poster.jpg"
-          preload="metadata"
+          preload="none"
         >
-          <source src="/video/hero.mp4" type="video/mp4" />
+          {loadVideo && <source src="/video/hero.mp4" type="video/mp4" />}
         </video>
       </motion.div>
 

@@ -77,6 +77,15 @@ const jsonLd = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR" className={`${geistSans.variable} antialiased`}>
+      <head>
+        {/* Prioriza a imagem do LCP (poster do Hero) para pintar mais cedo. */}
+        <link
+          rel="preload"
+          as="image"
+          href="/video/hero_poster.jpg"
+          fetchPriority="high"
+        />
+      </head>
       <body>
         <script
           type="application/ld+json"
