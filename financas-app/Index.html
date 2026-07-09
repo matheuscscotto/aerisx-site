@@ -301,11 +301,14 @@ function initSync(){
       S.incomes=m.incomes||S.incomes;
       S.fixed=m.fixed||S.fixed;
       if(typeof m.investTargetPct==="number")S.investTargetPct=m.investTargetPct;
+      S.transactions=res.transactions;
+      S.debts=res.debts;
     }else{
-      pushOp("saveMeta",metaSubset()); // primeira vez: semeia a nuvem
+      // Primeira vez: semeia a nuvem com os dados iniciais deste aparelho
+      pushOp("saveMeta",metaSubset());
+      S.debts.forEach(function(d){pushOp("upsertDebt",d);});
+      S.transactions.forEach(function(t){pushOp("upsertTx",t);});
     }
-    S.transactions=res.transactions;
-    S.debts=res.debts;
     S=migrate(S);
     saveCache();
     render();
