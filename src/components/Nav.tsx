@@ -24,7 +24,7 @@ export default function Nav() {
       }`}
     >
       <nav className="container-x flex h-[72px] items-center justify-between">
-        <a href="#top" className="flex items-center" aria-label="AERISX — início">
+        <a href="/" className="flex items-center" aria-label="AERISX — início">
           <Image
             src="/logo.png"
             alt="AERISX"
@@ -35,7 +35,7 @@ export default function Nav() {
           />
         </a>
 
-        <ul className="hidden items-center gap-8 lg:flex">
+        <ul className="hidden items-center gap-7 lg:flex">
           {navLinks.map((l) => (
             <li key={l.href}>
               <a

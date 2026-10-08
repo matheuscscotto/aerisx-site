@@ -100,6 +100,70 @@ section[id] {
   }
 }
 
+/* Corpo dos artigos do blog */
+.prose-ax {
+  font-size: 1.075rem;
+  line-height: 1.8;
+  color: rgba(242, 245, 248, 0.86);
+}
+.prose-ax > * + * {
+  margin-top: 1.15em;
+}
+.prose-ax h2 {
+  margin-top: 2.2em;
+  font-size: 1.6rem;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-fg);
+}
+.prose-ax h3 {
+  margin-top: 1.8em;
+  font-size: 1.2rem;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--color-fg);
+}
+.prose-ax h2 + *,
+.prose-ax h3 + * {
+  margin-top: 0.6em;
+}
+.prose-ax strong {
+  color: var(--color-fg);
+  font-weight: 600;
+}
+.prose-ax a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.prose-ax a:hover {
+  text-decoration-thickness: 2px;
+}
+.prose-ax ul,
+.prose-ax ol {
+  padding-left: 1.4em;
+}
+.prose-ax ul {
+  list-style: disc;
+}
+.prose-ax ol {
+  list-style: decimal;
+}
+.prose-ax li + li {
+  margin-top: 0.5em;
+}
+.prose-ax li::marker {
+  color: var(--color-accent);
+}
+.prose-ax blockquote {
+  border-left: 2px solid var(--color-accent);
+  padding-left: 1.2em;
+  color: var(--color-muted);
+  font-style: italic;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
